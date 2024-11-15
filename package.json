@@ -1,7 +1,7 @@
 {
   "name": "lok",
   "version": "0.1.0",
-  "homepage": "https://aabbPhD.github.io/astaralgo"
+  "homepage": "https://aabbPhD.github.io/astaralgo",
   "private": true,
   "dependencies": {
     "@pixi/events": "^7.4.2",
