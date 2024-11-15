@@ -1,0 +1,62 @@
+.game_window {
+    display: flex;
+}
+
+.info {
+    width: 300px;
+    padding: 10px;
+    margin-left: 20px;  
+    background-color: #c7c7c7;    
+
+    //стили для информационного блока
+    @mixin infoStyle() {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        &:hover {
+            cursor: pointer;
+            background-color: #dbfc46a0;
+        }
+    }
+
+    .terrain_info_block {
+        @include infoStyle();
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 10px;
+
+        .terrain_img {
+            width: 64px;
+            height: 64px;
+            margin-top: 4px;
+        }
+
+        .terrain_info {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-left: 10px;
+
+            .terrain_info-span {
+                font-weight: bold;
+            }
+        }
+    }
+
+    .btn {
+        @include infoStyle();
+        font-size: 110%;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .distance_block {
+        @include infoStyle();
+        font-size: 110%;
+        font-weight: bold;
+
+        span {color: red;}
+    }
+}
