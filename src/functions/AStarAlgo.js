@@ -1,5 +1,5 @@
 import { PriorityQueue } from "./PriorityQueue"
-import { terrains_map } from '../components/TerrainInfo';
+import { terrains_map } from '../components/Info';
 
 
 const BASIC_MOVE_COST = 10//10 по умолчанию

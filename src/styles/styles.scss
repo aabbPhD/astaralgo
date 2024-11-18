@@ -3,9 +3,9 @@
 }
 
 .info {
-    width: 300px;
+    width: 250px;
     padding: 10px;
-    margin-left: 20px;  
+    margin-left: 10px;  
     background-color: #c7c7c7;    
 
     //стили для информационного блока
@@ -15,6 +15,11 @@
         padding: 10px;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    //стили для информационного блока - с возможностью взаимодействия
+    @mixin infoStyle_hoverable() {
+        @include infoStyle();
         &:hover {
             cursor: pointer;
             background-color: #dbfc46a0;
@@ -22,7 +27,7 @@
     }
 
     .terrain_info_block {
-        @include infoStyle();
+        @include infoStyle_hoverable();
         display: flex;
         align-items: flex-start;
         margin-bottom: 10px;
@@ -45,11 +50,21 @@
         }
     }
 
+    .start_finish_blocks {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+    }
+
     .btn {
-        @include infoStyle();
+        @include infoStyle_hoverable();
+        width: 50%;
         font-size: 110%;
         font-weight: bold;
-        margin-bottom: 10px;
+
+        &:first-of-type {
+            margin-right: 5px;
+        }
     }
 
     .distance_block {
@@ -59,4 +74,15 @@
 
         span {color: red;}
     }
+
+    .preset_block {
+        @include infoStyle_hoverable();
+        font-size: 110%;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+}
+
+.presets {
+    width: 120px !important;
 }

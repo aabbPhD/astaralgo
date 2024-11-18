@@ -1,4 +1,4 @@
-import '../styles/game.scss'
+import '../styles/styles.scss'
 
 import grass_asset from "./assets/grass.png";
 import sand_asset from "./assets/sand.png";
@@ -33,7 +33,7 @@ const terNames_map = {
 
 
 
-export default function TerrainInfo(props){
+export default function Info(props){
     return (
       <div className="info">
         {['.', 's', '~', '=', 'w'].map(item => {
@@ -62,8 +62,10 @@ export default function TerrainInfo(props){
             </div>
           </div>
         })}
-        <Btn setMode={props.setMode} mode={'START'} text={'Выбрать начальную клетку'} setStart={props.setStart} setFinish={props.setFinish} setPath={props.setPath}/>
-        <Btn setMode={props.setMode} mode={'FINISH'} text={'Рассчитать расстояние до выбранной клетки'} setStart={props.setStart} setFinish={props.setFinish} setPath={props.setPath}/>
+        <div className='start_finish_blocks'> 
+          <Btn setMode={props.setMode} mode={'START'} text={'Начало'} setStart={props.setStart} setFinish={props.setFinish} setPath={props.setPath}/>
+          <Btn setMode={props.setMode} mode={'FINISH'} text={'Конец'} setStart={props.setStart} setFinish={props.setFinish} setPath={props.setPath}/>
+        </div>
         <div className='distance_block'>Расстояние: <span>{props.distance ? props.distance : 'не посчитано'}</span></div>
       </div>
     );

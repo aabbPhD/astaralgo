@@ -1,28 +1,16 @@
 import './styles/reset.css'
-import './styles/game.scss'
-import React, { useState, useEffect } from "react";
-import TerrainInfo from './components/TerrainInfo'
+import './styles/styles.scss'
+import React from "react";
+import { preset_1, preset_2 } from './components/presets';
+import Info from './components/Info'
+import PresetBlock from './components/PresetBlock'
 import {WorldMap} from './components/WorldMap'
 import findPath from './functions/AStarAlgo'
 
 
-let init_w_map = [
-  ["=", "=", "~", "~", "~", "~", "~", "~", "~", ".", ".", ".", ".", "w", "w"],
-  ["=", "~", "~", "~", "~", "~", ".", ".", ".", ".", ".", ".", ".", ".", "w"],
-  ["~", "~", "s", ".", ".", "~", "~", ".", ".", ".", ".", ".", ".", ".", "."],
-  ["~", "~", ".", ".", ".", "s", "~", "~", "~", ".", ".", ".", ".", ".", "s"],
-  ["~", ".", ".", ".", ".", "s", "~", "=", "~", ".", ".", ".", ".", ".", "s"],
-  ["~", ".", "w", ".", ".", "s", "~", "=", "~", ".", ".", ".", ".", "s", "s"],
-  ["~", ".", ".", "w", ".", ".", "~", "~", "~", ".", ".", ".", "s", "s", "s"],
-  ["~", ".", ".", ".", "s", ".", ".", ".", ".", ".", "~", ".", "s", "s", "s"],
-  [".", ".", ".", ".", "s", ".", ".", ".", ".", ".", "~", "s", "s", "s", "s"],
-  [".", ".", ".", ".", ".", ".", ".", ".", "s", "s", "s", "s", "s", "s", "s"],
-]
-
-const INF = 999999
 
 function App() {
-  let [w_map, setW_map] = React.useState(init_w_map)
+  let [w_map, setW_map] = React.useState(preset_1)
   let [mode, setMode] = React.useState(null)
   let [chosenTerrain, setChosenTerrain] = React.useState(null)
   let [start, setStart] = React.useState(null)
@@ -48,7 +36,6 @@ function App() {
     });
   };
 
-  //console.log(chosenTerrain)
 
   return (
     <div className="game_window">
@@ -63,13 +50,15 @@ function App() {
         finish={finish}
         setFinish={setFinish}
         path={path}/>
-      <TerrainInfo 
+      <Info 
         setMode={setMode}
         setChosenTerrain={setChosenTerrain}
         setStart={setStart}
         setFinish={setFinish}
         setPath={setPath}
         distance={distance}/>
+      <PresetBlock 
+        setW_map={setW_map}/>
     </div>
   );
 }
