@@ -1,10 +1,10 @@
 import '../styles/styles.scss'
 
-import grass_asset from "./assets/grass.png";
-import sand_asset from "./assets/sand.png";
-import shallowWater_asset from "./assets/shallow_water.png";
-import deepWater_asset from './assets/deep_water.png'
-import spruce_asset from "./assets/spruce.png";
+import grass_asset from "../assets/img/grass.png";
+import sand_asset from "../assets/img/sand.png";
+import shallowWater_asset from "../assets/img/shallow_water.png";
+import deepWater_asset from '../assets/img/deep_water.png'
+import spruce_asset from "../assets/img/spruce.png";
 
 
 
@@ -42,9 +42,6 @@ export default function Info(props){
 
           const handleClick = () => {
             props.setMode('TERRAIN')
-            props.setStart(null)
-            props.setFinish(null)
-            props.setPath([])
             props.setChosenTerrain(terNames_map[curTerrain.name])
           }
 

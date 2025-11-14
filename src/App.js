@@ -3,14 +3,13 @@ import './styles/styles.scss'
 import React from "react";
 import { preset_1, preset_2 } from './components/presets';
 import Info from './components/Info'
-import PresetBlock from './components/PresetBlock'
 import {WorldMap} from './components/WorldMap'
 import findPath from './functions/AStarAlgo'
 
 
 
 function App() {
-  let [w_map, setW_map] = React.useState(preset_1)
+  let [w_map, setW_map] = React.useState(preset_2)
   let [mode, setMode] = React.useState(null)
   let [chosenTerrain, setChosenTerrain] = React.useState(null)
   let [start, setStart] = React.useState(null)
@@ -26,7 +25,7 @@ function App() {
       } else {
         setDistance(null)
       }
-  }, [start, finish])
+  }, [start, finish, w_map])
 
   const updateTileTerrain = (rowIndex, colIndex, newTerrain) => {
     setW_map(prevMap => {
@@ -57,8 +56,6 @@ function App() {
         setFinish={setFinish}
         setPath={setPath}
         distance={distance}/>
-      <PresetBlock 
-        setW_map={setW_map}/>
     </div>
   );
 }

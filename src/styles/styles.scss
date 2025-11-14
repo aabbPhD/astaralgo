@@ -1,12 +1,30 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto/Roboto-VariableFont_wdth,wght.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto/Roboto-Italic-VariableFont_wdth,wght.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
 .game_window {
     display: flex;
+    justify-content: center;
+    font-family: 'Roboto';
+    font-size: 14px;
+    user-select: none;
 }
 
 .info {
     width: 250px;
     padding: 10px;
     margin-left: 10px;  
-    background-color: #c7c7c7;    
+    background-color: #e6e6e6;    
 
     //стили для информационного блока
     @mixin infoStyle() {
@@ -22,7 +40,7 @@
         @include infoStyle();
         &:hover {
             cursor: pointer;
-            background-color: #dbfc46a0;
+            background-color: #d6fffa;
         }
     }
 
@@ -42,7 +60,10 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            gap: 5px;
             margin-left: 10px;
+            margin-top: 10px;
+            
 
             .terrain_info-span {
                 font-weight: bold;
@@ -81,8 +102,4 @@
         font-weight: bold;
         margin-bottom: 10px;
     }
-}
-
-.presets {
-    width: 120px !important;
 }

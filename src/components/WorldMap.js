@@ -1,20 +1,18 @@
 import {useState} from 'react'
-import { Stage, Sprite } from '@pixi/react';
+import { Stage, Sprite  } from '@pixi/react';
 import * as PIXI from "pixi.js";
 import '@pixi/events';
 import { terrains_map } from './Info';
+
+import START_TEXTURE from "../assets/img/start.png";
+import FINISH_TEXTURE from "../assets/img/finish.png";
 
 
 const TILE_SIZE = 64;
 
 const NO_TINT = '#FFFFFF'
-const START_TINT = '#4169E1'
-const PATH_TINT = '#E1CA3F'
-const TERRAIN_TINT = '#CCCCCC'
-const aaa = '#CCCCCC'
-const bbb = '#4169E1'
-const ccc = '#E1CA3F'
-
+const PATH_TINT = '#AAAAAA'
+const HOVER_TINT = '#CCCCCC'
 
 
 
@@ -59,11 +57,13 @@ const Tile = ({ rowIndex, colIndex, tile, mode, setMode, start, setStart, finish
     let isFinish = finish && (finish.i === rowIndex && finish.j === colIndex)
     const inPath = path.some(cell => cell.j === colIndex && cell.i === rowIndex);
     let tintValue
-    if (isHovered_terrain) tintValue = TERRAIN_TINT
-    else if (isStart || isHovered_start) tintValue = START_TINT
+    if (isHovered_terrain) tintValue = HOVER_TINT
+    else if (isStart || isHovered_start) tintValue = PATH_TINT
     else if (isFinish || isHovered_finish) tintValue = PATH_TINT
     else if (inPath) tintValue = PATH_TINT
     else tintValue = NO_TINT
+
+    const alpha = (tintValue === PATH_TINT) ? 0.75 : 1
   
     const handlePointerOver = () => {
         if (mode === 'TERRAIN') setIsHovered_terrain(true)
@@ -80,30 +80,53 @@ const Tile = ({ rowIndex, colIndex, tile, mode, setMode, start, setStart, finish
             updateTileTerrain(rowIndex, colIndex, chosenTerrain)
         }
         if (mode === 'START') {
-            if (!terrain.passable && finish && (rowIndex === finish.i && colIndex === finish.j)) return
+            if (!terrain.passable || (finish && (rowIndex === finish.i && colIndex === finish.j))) return
             setStart({i: rowIndex, j: colIndex})
             setMode(null)
         }
         if (mode === 'FINISH') {
-            if (!terrain.passable && start && (rowIndex === start.i && colIndex === start.j)) return
+            if (!terrain.passable || (start && (rowIndex === start.i && colIndex === start.j))) return
             setFinish({i: rowIndex, j: colIndex})
             setMode(null)
         }
     }
   
     return (
-      <Sprite
-        image={terrain.asset}
-        x={colIndex * TILE_SIZE}
-        y={rowIndex * TILE_SIZE}
-        width={TILE_SIZE}
-        height={TILE_SIZE}
-        interactive={true}
-        pointerover={handlePointerOver}
-        pointerout={handlePointerOut}
-        pointertap={handleClick}
-        tint={tintValue}
-        cursor='pointer'
-      />
+        <>
+            <Sprite
+                image={terrain.asset}
+                x={colIndex * TILE_SIZE}
+                y={rowIndex * TILE_SIZE}
+                width={TILE_SIZE}
+                height={TILE_SIZE}
+                interactive={true}
+                pointerover={handlePointerOver}
+                pointerout={handlePointerOut}
+                pointertap={handleClick}
+                tint={tintValue}
+                alpha={alpha}
+                cursor='pointer'
+            />
+            {
+                isStart && 
+                <Sprite
+                    image={START_TEXTURE}
+                    x={colIndex * TILE_SIZE + 12}
+                    y={rowIndex * TILE_SIZE + 3}
+                    width={44}
+                    height={58}
+                />
+            }
+            {
+                isFinish && 
+                <Sprite
+                    image={FINISH_TEXTURE}
+                    x={colIndex * TILE_SIZE + 12}
+                    y={rowIndex * TILE_SIZE + 3}
+                    width={44}
+                    height={58}
+                />
+            }
+      </>
     );
 };
