@@ -70,12 +70,16 @@ const Tile = ({ rowIndex, colIndex, tile, mode, setMode, start, setStart, finish
         if (mode === 'START' && !isFinish && terrain.passable) setIsHovered_start(true)
         if (mode === 'FINISH' && !isStart && terrain.passable) setIsHovered_finish(true)
     }
+
     const handlePointerOut = () => {
         setIsHovered_terrain(false)
         setIsHovered_start(false)
         setIsHovered_finish(false)
     }
-    const handleClick = () => {
+
+    const handleClick = (e) => {
+        if (e.button !== 0) return;
+
         if (mode === 'TERRAIN') {
             updateTileTerrain(rowIndex, colIndex, chosenTerrain)
         }
@@ -88,6 +92,12 @@ const Tile = ({ rowIndex, colIndex, tile, mode, setMode, start, setStart, finish
             if (!terrain.passable || (start && (rowIndex === start.i && colIndex === start.j))) return
             setFinish({i: rowIndex, j: colIndex})
             setMode(null)
+        }
+    }
+
+    const handleMove = (e) => {
+        if (mode === 'TERRAIN' && e.buttons === 1) {
+            updateTileTerrain(rowIndex, colIndex, chosenTerrain)
         }
     }
   
@@ -103,6 +113,7 @@ const Tile = ({ rowIndex, colIndex, tile, mode, setMode, start, setStart, finish
                 pointerover={handlePointerOver}
                 pointerout={handlePointerOut}
                 pointertap={handleClick}
+                pointermove={handleMove}
                 tint={tintValue}
                 alpha={alpha}
                 cursor='pointer'

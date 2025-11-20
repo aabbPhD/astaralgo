@@ -1,7 +1,7 @@
 import './styles/reset.css'
 import './styles/styles.scss'
 import React from "react";
-import { preset_1, preset_2 } from './components/presets';
+import { preset } from './components/presets';
 import Info from './components/Info'
 import {WorldMap} from './components/WorldMap'
 import findPath from './functions/AStarAlgo'
@@ -9,7 +9,7 @@ import findPath from './functions/AStarAlgo'
 
 
 function App() {
-  let [w_map, setW_map] = React.useState(preset_2)
+  let [w_map, setW_map] = React.useState(preset)
   let [mode, setMode] = React.useState(null)
   let [chosenTerrain, setChosenTerrain] = React.useState(null)
   let [start, setStart] = React.useState(null)
@@ -37,7 +37,7 @@ function App() {
 
 
   return (
-    <div className="game_window">
+    <div className="game_window" onContextMenu={(e)=> e.preventDefault()}>
       <WorldMap 
         w_map={w_map}
         mode={mode} 
@@ -50,7 +50,9 @@ function App() {
         setFinish={setFinish}
         path={path}/>
       <Info 
+        mode={mode}
         setMode={setMode}
+        chosenTerrain={chosenTerrain}
         setChosenTerrain={setChosenTerrain}
         setStart={setStart}
         setFinish={setFinish}

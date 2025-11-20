@@ -29,8 +29,8 @@
     //стили для информационного блока
     @mixin infoStyle() {
         background-color: #fff;
-        border: 1px solid #ddd;
         padding: 10px;
+        border: 1px solid #ddd;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
@@ -40,11 +40,14 @@
         @include infoStyle();
         &:hover {
             cursor: pointer;
-            background-color: #d6fffa;
+            background-color: #e7eaff;
+        }
+        &.active { 
+            background-color: #fffb91; 
         }
     }
 
-    .terrain_info_block {
+    .terrain_info_button {
         @include infoStyle_hoverable();
         display: flex;
         align-items: flex-start;
