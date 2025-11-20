@@ -37,7 +37,7 @@ function App() {
 
 
   return (
-    <div className="game_window" onContextMenu={(e)=> e.preventDefault()}>
+    <div className="app" onContextMenu={(e)=> e.preventDefault()}>
       <WorldMap 
         w_map={w_map}
         mode={mode} 
