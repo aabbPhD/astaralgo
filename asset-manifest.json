@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/astaralgo/static/css/main.ace0933d.css",
-    "main.js": "/astaralgo/static/js/main.7eead7f4.js",
+    "main.css": "/astaralgo/static/css/main.855fef91.css",
+    "main.js": "/astaralgo/static/js/main.8a440f44.js",
     "static/js/975.46e47733.chunk.js": "/astaralgo/static/js/975.46e47733.chunk.js",
     "static/js/929.3122c1cc.chunk.js": "/astaralgo/static/js/929.3122c1cc.chunk.js",
     "static/js/323.09a4c763.chunk.js": "/astaralgo/static/js/323.09a4c763.chunk.js",
     "static/media/Roboto-Italic-VariableFont_wdth,wght.ttf": "/astaralgo/static/media/Roboto-Italic-VariableFont_wdth,wght.a98692b7f24435150ede.ttf",
     "static/media/Roboto-VariableFont_wdth,wght.ttf": "/astaralgo/static/media/Roboto-VariableFont_wdth,wght.3c9d0f6513f7cfe91016.ttf",
     "index.html": "/astaralgo/index.html",
-    "main.ace0933d.css.map": "/astaralgo/static/css/main.ace0933d.css.map",
-    "main.7eead7f4.js.map": "/astaralgo/static/js/main.7eead7f4.js.map",
+    "main.855fef91.css.map": "/astaralgo/static/css/main.855fef91.css.map",
+    "main.8a440f44.js.map": "/astaralgo/static/js/main.8a440f44.js.map",
     "975.46e47733.chunk.js.map": "/astaralgo/static/js/975.46e47733.chunk.js.map",
     "323.09a4c763.chunk.js.map": "/astaralgo/static/js/323.09a4c763.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ace0933d.css",
-    "static/js/main.7eead7f4.js"
+    "static/css/main.855fef91.css",
+    "static/js/main.8a440f44.js"
   ]
 }
